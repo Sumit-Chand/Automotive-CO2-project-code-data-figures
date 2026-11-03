@@ -1,0 +1,34 @@
+Intervals: {
+ "nominal": 90.0,
+ "quantile_gb": {
+  "coverage": 78.51596203623814,
+  "mean_width": 28.087632961278786
+ },
+ "conformal_abs": {
+  "coverage": 91.2855910267472,
+  "mean_width": 31.58760896138988,
+  "q": 15.79380448069494
+ },
+ "conformal_rel": {
+  "coverage": 90.3364969801553,
+  "mean_width": 31.077147972029294,
+  "q_pct": 8.374884951558977
+ }
+}
+temporal {'n_train': 4305, 'n_test': 1518, 'rmse': 9.349022450109558, 'mae': 7.106829995593123, 'r2': 0.9653099660283363, 'bias': -1.5171455951598711, 'ridge_log_rmse': 9.495576520551062, 'ridge_log_bias': -0.14623055600236895, 'gb_rmse': 10.499408672174956, 'gb_bias': -2.8880606343173736}
+Cut curb weight by 100 kg                               n=1159     -6.9 g/km    -3.7% [-3.8,-3.7]
+Cut curb weight by 5 %                                  n=1159     -5.8 g/km    -3.0% [-3.1,-3.0]
+Downsize engine by 0.5 L (hp unchanged)                 n= 869     -6.9 g/km    -3.5% [-3.6,-3.4]
+ICE -> mild hybrid                                      n= 987    -13.3 g/km    -6.9% [-6.9,-6.9]
+ICE -> full hybrid                                      n= 987    -56.9 g/km   -29.7% [-29.8,-29.6]
+AWD -> FWD (where AWD not essential)                    n= 319    -13.2 g/km    -6.6% [-6.7,-6.5]
+Switch to CVT (non-CVT, non-manual)                     n= 886     -8.3 g/km    -4.5% [-4.5,-4.4]
+Combined: -5% weight, ICE->mild hybrid, -0.3 L          n=1159    -20.2 g/km   -10.6% [-10.8,-10.4]
+Baseline (test portfolio)                                 185.5 g/km     0.0%  = 0.0 model-years of historical progress
++10 pts of sales to full hybrid                           179.8 g/km    -3.1%  = 2.9 model-years of historical progress
++20 pts of sales to full hybrid                           174.2 g/km    -6.1%  = 5.8 model-years of historical progress
+-5 % curb weight, all vehicles                            179.7 g/km    -3.1%  = 2.9 model-years of historical progress
+Mix: 10 pts heavy SUV/pickup -> small SUV                 178.5 g/km    -3.8%  = 3.6 model-years of historical progress
+Combined package (weight, mild hybrids, downsizing)       165.3 g/km   -10.9%  = 10.2 model-years of historical progress
+Combined + 10 pts full hybrid + mix shift                 152.6 g/km   -17.8%  = 16.7 model-years of historical progress
+done

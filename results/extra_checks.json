@@ -1,0 +1,14 @@
+{
+ "any_numeric_imputed": {
+  "n_with": 109,
+  "rmse_with": 10.7914096292327,
+  "n_without": 1050,
+  "rmse_without": 8.924347439949038
+ },
+ "weight_imputed": {
+  "n_with": 50,
+  "rmse_with": 12.685250276330665,
+  "n_without": 1109,
+  "rmse_without": 8.921758907218692
+ }
+}

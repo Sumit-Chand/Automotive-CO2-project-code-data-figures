@@ -1,0 +1,505 @@
+{
+ "overall": {
+  "rmse": 9.1162428384783,
+  "mae": 7.095993305332802,
+  "r2": 0.964160815621949,
+  "bias": -0.7318934023084555,
+  "share_err_gt15": 10.09490940465919,
+  "share_err_gt20": 3.4512510785159622
+ },
+ "seg_class": {
+  "Compact": {
+   "n": 160.0,
+   "rmse": 7.49,
+   "mae": 5.79,
+   "mape": 3.95,
+   "bias": 1.59,
+   "mean_co2": 146.49
+  },
+  "Full-size": {
+   "n": 116.0,
+   "rmse": 10.02,
+   "mae": 7.82,
+   "mape": 3.9,
+   "bias": -0.45,
+   "mean_co2": 207.5
+  },
+  "Mid-size": {
+   "n": 248.0,
+   "rmse": 7.78,
+   "mae": 6.13,
+   "mape": 3.64,
+   "bias": -1.46,
+   "mean_co2": 170.21
+  },
+  "Minivan": {
+   "n": 55.0,
+   "rmse": 10.63,
+   "mae": 8.27,
+   "mape": 3.46,
+   "bias": 2.21,
+   "mean_co2": 234.64
+  },
+  "Pickup Truck": {
+   "n": 39.0,
+   "rmse": 13.49,
+   "mae": 11.39,
+   "mape": 3.82,
+   "bias": 5.95,
+   "mean_co2": 299.49
+  },
+  "SUV - Small": {
+   "n": 167.0,
+   "rmse": 9.44,
+   "mae": 7.35,
+   "mape": 4.23,
+   "bias": -0.47,
+   "mean_co2": 177.7
+  },
+  "SUV - Standard": {
+   "n": 143.0,
+   "rmse": 10.94,
+   "mae": 8.82,
+   "mape": 3.89,
+   "bias": -3.17,
+   "mean_co2": 233.55
+  },
+  "Sports/Performance": {
+   "n": 83.0,
+   "rmse": 9.67,
+   "mae": 7.45,
+   "mape": 3.47,
+   "bias": -2.64,
+   "mean_co2": 215.49
+  },
+  "Sub-compact": {
+   "n": 148.0,
+   "rmse": 7.18,
+   "mae": 5.84,
+   "mape": 4.65,
+   "bias": -1.97,
+   "mean_co2": 127.86
+  }
+ },
+ "seg_powertrain": {
+  "ICE": {
+   "n": 987.0,
+   "rmse": 9.25,
+   "mae": 7.19,
+   "mape": 3.84,
+   "bias": -0.63,
+   "mean_co2": 191.31
+  },
+  "Mild hybrid": {
+   "n": 90.0,
+   "rmse": 8.81,
+   "mae": 7.14,
+   "mape": 4.5,
+   "bias": -1.31,
+   "mean_co2": 165.51
+  },
+  "Full hybrid": {
+   "n": 82.0,
+   "rmse": 7.73,
+   "mae": 5.92,
+   "mape": 4.55,
+   "bias": -1.28,
+   "mean_co2": 127.68
+  }
+ },
+ "seg_fuel": {
+  "Diesel": {
+   "n": 31.0,
+   "rmse": 10.17,
+   "mae": 8.23,
+   "mape": 4.12,
+   "bias": -2.44,
+   "mean_co2": 202.71
+  },
+  "Premium": {
+   "n": 286.0,
+   "rmse": 10.01,
+   "mae": 7.83,
+   "mape": 3.88,
+   "bias": -0.23,
+   "mean_co2": 208.31
+  },
+  "Regular": {
+   "n": 834.0,
+   "rmse": 8.75,
+   "mae": 6.8,
+   "mape": 3.95,
+   "bias": -0.83,
+   "mean_co2": 175.96
+  }
+ },
+ "seg_drivetrain": {
+  "AWD": {
+   "n": 319.0,
+   "rmse": 9.66,
+   "mae": 7.64,
+   "mape": 3.89,
+   "bias": -0.91,
+   "mean_co2": 201.38
+  },
+  "FWD": {
+   "n": 694.0,
+   "rmse": 8.62,
+   "mae": 6.72,
+   "mape": 4.03,
+   "bias": -0.85,
+   "mean_co2": 170.75
+  },
+  "RWD": {
+   "n": 114.0,
+   "rmse": 9.05,
+   "mae": 6.81,
+   "mape": 3.11,
+   "bias": -0.82,
+   "mean_co2": 220.72
+  }
+ },
+ "seg_year": {
+  "2015-17": {
+   "n": 292.0,
+   "rmse": 9.22,
+   "mae": 7.15,
+   "mape": 3.85,
+   "bias": -0.87,
+   "mean_co2": 190.19
+  },
+  "2018-20": {
+   "n": 420.0,
+   "rmse": 9.2,
+   "mae": 7.24,
+   "mape": 4.01,
+   "bias": -1.21,
+   "mean_co2": 186.29
+  },
+  "2021-24": {
+   "n": 447.0,
+   "rmse": 8.96,
+   "mae": 6.93,
+   "mape": 3.93,
+   "bias": -0.19,
+   "mean_co2": 179.9
+  }
+ },
+ "seg_make_rmse_range": [
+  7.387008926842234,
+  11.292857532212444,
+  "Make_B",
+  "Make_L"
+ ],
+ "worst_cases": [
+  {
+   "vehicle_class": "Minivan",
+   "make": "Make_F",
+   "model_year": 2016,
+   "engine_size_l": 3.5,
+   "weight_kg": 2056.0,
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "co2_gkm": 273,
+   "pred": 241.0,
+   "res": 32.0
+  },
+  {
+   "vehicle_class": "SUV - Standard",
+   "make": "Make_C",
+   "model_year": 2022,
+   "engine_size_l": 3.6,
+   "weight_kg": 2146.0,
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "co2_gkm": 215,
+   "pred": 247.0,
+   "res": -32.0
+  },
+  {
+   "vehicle_class": "Sports/Performance",
+   "make": "Make_L",
+   "model_year": 2024,
+   "engine_size_l": 4.8,
+   "weight_kg": 1675.0,
+   "powertrain": "ICE",
+   "fuel_type": "Premium",
+   "co2_gkm": 224,
+   "pred": 255.0,
+   "res": -31.0
+  },
+  {
+   "vehicle_class": "Full-size",
+   "make": "Make_D",
+   "model_year": 2015,
+   "engine_size_l": 4.6,
+   "weight_kg": null,
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "co2_gkm": 268,
+   "pred": 239.0,
+   "res": 29.0
+  },
+  {
+   "vehicle_class": "SUV - Small",
+   "make": "Make_L",
+   "model_year": 2017,
+   "engine_size_l": 1.9,
+   "weight_kg": null,
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "co2_gkm": 139,
+   "pred": 167.0,
+   "res": -28.0
+  },
+  {
+   "vehicle_class": "Pickup Truck",
+   "make": "Make_J",
+   "model_year": 2023,
+   "engine_size_l": 4.8,
+   "weight_kg": 2520.0,
+   "powertrain": "ICE",
+   "fuel_type": "Premium",
+   "co2_gkm": 328,
+   "pred": 300.0,
+   "res": 28.0
+  },
+  {
+   "vehicle_class": "SUV - Small",
+   "make": "Make_D",
+   "model_year": 2017,
+   "engine_size_l": 1.9,
+   "weight_kg": null,
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "co2_gkm": 210,
+   "pred": 183.0,
+   "res": 27.0
+  },
+  {
+   "vehicle_class": "Sports/Performance",
+   "make": "Make_L",
+   "model_year": 2015,
+   "engine_size_l": 4.8,
+   "weight_kg": 1627.0,
+   "powertrain": "ICE",
+   "fuel_type": "Premium",
+   "co2_gkm": 226,
+   "pred": 252.0,
+   "res": -26.0
+  }
+ ],
+ "worst_cases_share_hybrid_or_diesel": 8.0,
+ "intervals": {
+  "nominal": 90.0,
+  "quantile_gb": {
+   "coverage": 78.51596203623814,
+   "mean_width": 28.087632961278786
+  },
+  "conformal_abs": {
+   "coverage": 91.2855910267472,
+   "mean_width": 31.58760896138988,
+   "q": 15.79380448069494
+  },
+  "conformal_rel": {
+   "coverage": 90.3364969801553,
+   "mean_width": 31.077147972029294,
+   "q_pct": 8.374884951558977
+  },
+  "coverage_by_class_conf_abs": {
+   "Compact": 96.2,
+   "Full-size": 86.2,
+   "Mid-size": 96.0,
+   "Minivan": 85.5,
+   "Pickup Truck": 71.8,
+   "SUV - Small": 89.2,
+   "SUV - Standard": 83.2,
+   "Sports/Performance": 90.4,
+   "Sub-compact": 100.0
+  },
+  "coverage_by_class_conf_rel": {
+   "Compact": 88.8,
+   "Full-size": 90.5,
+   "Mid-size": 94.4,
+   "Minivan": 94.5,
+   "Pickup Truck": 92.3,
+   "SUV - Small": 88.6,
+   "SUV - Standard": 92.3,
+   "Sports/Performance": 91.6,
+   "Sub-compact": 82.4
+  },
+  "coverage_by_class_quantile": {
+   "Compact": 83.8,
+   "Full-size": 70.7,
+   "Mid-size": 80.6,
+   "Minivan": 81.8,
+   "Pickup Truck": 69.2,
+   "SUV - Small": 77.8,
+   "SUV - Standard": 75.5,
+   "Sports/Performance": 90.4,
+   "Sub-compact": 73.6
+  }
+ },
+ "temporal": {
+  "n_train": 4305,
+  "n_test": 1518,
+  "rmse": 9.349022450109558,
+  "mae": 7.106829995593123,
+  "r2": 0.9653099660283363,
+  "bias": -1.5171455951598711,
+  "by_year": {
+   "2022": {
+    "rmse": 9.599516892232968,
+    "bias": -0.556437757415882
+   },
+   "2023": {
+    "rmse": 9.4589590746989,
+    "bias": -2.217072059857965
+   },
+   "2024": {
+    "rmse": 8.711170824726937,
+    "bias": -2.18997592035396
+   }
+  },
+  "ridge_log_rmse": 9.495576520551062,
+  "ridge_log_bias": -0.14623055600236895,
+  "gb_rmse": 10.499408672174956,
+  "gb_bias": -2.8880606343173736
+ },
+ "scenarios": [
+  {
+   "name": "Cut curb weight by 100 kg",
+   "n": 1159,
+   "mean_delta": -6.856081857913656,
+   "mean_pct": -3.730517325547608,
+   "ci_lo": -3.810721848847453,
+   "ci_hi": -3.6523850097534027
+  },
+  {
+   "name": "Cut curb weight by 5 %",
+   "n": 1159,
+   "mean_delta": -5.800639480262454,
+   "mean_pct": -3.040083241629477,
+   "ci_lo": -3.111620669579187,
+   "ci_hi": -2.963211003286278
+  },
+  {
+   "name": "Downsize engine by 0.5 L (hp unchanged)",
+   "n": 869,
+   "mean_delta": -6.856534841092996,
+   "mean_pct": -3.499259953470049,
+   "ci_lo": -3.5654492791622654,
+   "ci_hi": -3.432872592954494
+  },
+  {
+   "name": "ICE -> mild hybrid",
+   "n": 987,
+   "mean_delta": -13.349866825706394,
+   "mean_pct": -6.893337683765828,
+   "ci_lo": -6.939007158545301,
+   "ci_hi": -6.854039618803155
+  },
+  {
+   "name": "ICE -> full hybrid",
+   "n": 987,
+   "mean_delta": -56.89791165245009,
+   "mean_pct": -29.700257554559798,
+   "ci_lo": -29.809440021733213,
+   "ci_hi": -29.602195665270536
+  },
+  {
+   "name": "AWD -> FWD (where AWD not essential)",
+   "n": 319,
+   "mean_delta": -13.178461895446231,
+   "mean_pct": -6.585130135942626,
+   "ci_lo": -6.692175150337889,
+   "ci_hi": -6.493353692971815
+  },
+  {
+   "name": "Switch to CVT (non-CVT, non-manual)",
+   "n": 886,
+   "mean_delta": -8.322047741512568,
+   "mean_pct": -4.465014286434191,
+   "ci_lo": -4.527245220620132,
+   "ci_hi": -4.4017189625973705
+  },
+  {
+   "name": "Combined: -5% weight, ICE->mild hybrid, -0.3 L",
+   "n": 1159,
+   "mean_delta": -20.223931460762063,
+   "mean_pct": -10.605184825074726,
+   "ci_lo": -10.763496752963063,
+   "ci_hi": -10.444579452425925
+  }
+ ],
+ "fleet": {
+  "baseline": 185.53776052914193,
+  "ice_share": 0.8515962036238136,
+  "hyb_delta_per_ice_vehicle": -56.89791165245009,
+  "heavy_mean": 248.897519498843,
+  "small_suv_mean": 178.16853732687355,
+  "hist_slope": -1.9736998650259054,
+  "rows": [
+   {
+    "scenario": "Baseline (test portfolio)",
+    "delta": 0.0,
+    "fleet_co2": 185.53776052914193,
+    "pct": 0.0,
+    "years_equiv": 0.0
+   },
+   {
+    "scenario": "+10 pts of sales to full hybrid",
+    "delta": -5.689791165245009,
+    "fleet_co2": 179.84796936389694,
+    "pct": -3.0666486159033535,
+    "years_equiv": 2.882804658432871
+   },
+   {
+    "scenario": "+20 pts of sales to full hybrid",
+    "delta": -11.379582330490019,
+    "fleet_co2": 174.1581781986519,
+    "pct": -6.133297231806707,
+    "years_equiv": 5.765609316865742
+   },
+   {
+    "scenario": "-5 % curb weight, all vehicles",
+    "delta": -5.800639480262454,
+    "fleet_co2": 179.7371210488795,
+    "pct": -3.126392958349501,
+    "years_equiv": 2.938967359247562
+   },
+   {
+    "scenario": "Mix: 10 pts heavy SUV/pickup -> small SUV",
+    "delta": -7.072898217196945,
+    "fleet_co2": 178.46486231194498,
+    "pct": -3.8121071403608022,
+    "years_equiv": 3.5835733398624474
+   },
+   {
+    "scenario": "Combined package (weight, mild hybrids, downsizing)",
+    "delta": -20.223931460762063,
+    "fleet_co2": 165.31382906837987,
+    "pct": -10.900170080249268,
+    "years_equiv": 10.246710667174625
+   },
+   {
+    "scenario": "Combined + 10 pts full hybrid + mix shift",
+    "delta": -32.986620843204015,
+    "fleet_co2": 152.55113968593793,
+    "pct": -17.77892583651342,
+    "years_equiv": 16.713088665469943
+   }
+  ],
+  "cls_mean": {
+   "Compact": 144.90078179289355,
+   "Full-size": 207.9489919461337,
+   "Mid-size": 171.6757798197936,
+   "Minivan": 232.42304657643953,
+   "Pickup Truck": 293.5373422141515,
+   "SUV - Small": 178.16853732687355,
+   "SUV - Standard": 236.72302239466794,
+   "Sports/Performance": 218.13694996531024,
+   "Sub-compact": 129.82658252804038
+  }
+ }
+}

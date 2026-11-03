@@ -1,0 +1,579 @@
+{
+ "raw_shape": [
+  5902,
+  19
+ ],
+ "raw_missing": {
+  "engine_size_l": 65,
+  "horsepower": 168,
+  "weight_kg": 237,
+  "transmission": 132,
+  "drivetrain": 148,
+  "fuel_type": 60,
+  "comb_l100km": 84
+ },
+ "raw_dtypes": {
+  "vehicle_id": "str",
+  "model_family": "str",
+  "make": "str",
+  "model_year": "int64",
+  "vehicle_class": "str",
+  "engine_size_l": "float64",
+  "cylinders": "int64",
+  "horsepower": "float64",
+  "weight_kg": "float64",
+  "turbo": "int64",
+  "transmission": "str",
+  "drivetrain": "str",
+  "powertrain": "str",
+  "fuel_type": "str",
+  "city_l100km": "float64",
+  "hwy_l100km": "float64",
+  "comb_l100km": "float64",
+  "comb_mpg": "float64",
+  "co2_gkm": "int64"
+ },
+ "missing_after_invalid_to_nan": {
+  "engine_size_l": 74,
+  "cylinders": 8,
+  "horsepower": 177,
+  "weight_kg": 231,
+  "transmission": 131,
+  "drivetrain": 148,
+  "fuel_type": 60
+ },
+ "rows_after_basic_cleaning": 5823,
+ "imputation_benchmark_MAE": {
+  "weight_kg": {
+   "Global median": 260.8921387337934,
+   "Class median": 69.58702309569102,
+   "KNN (k=7)": 66.89475215132032,
+   "Iterative (BayesianRidge)": 63.086647162026985,
+   "Family median*": 23.739280462138986
+  },
+  "horsepower": {
+   "Global median": 49.7123822740697,
+   "Class median": 30.130684934758317,
+   "KNN (k=7)": 10.52039985615622,
+   "Iterative (BayesianRidge)": 9.827967990823328,
+   "Family median*": 18.539994265218134
+  }
+ },
+ "imputation_complete_rows": 5342,
+ "clean_rows": 5823,
+ "cleaning_log": [
+  {
+   "step": "Remove exact duplicate rows",
+   "rule": "df.duplicated()",
+   "rows": 70
+  },
+  {
+   "step": "Standardise vehicle_class labels",
+   "rule": "19 raw spellings -> 9 classes",
+   "rows": 10
+  },
+  {
+   "step": "Standardise transmission labels",
+   "rule": "9 raw spellings -> 4 types",
+   "rows": 5
+  },
+  {
+   "step": "Standardise fuel_type labels",
+   "rule": "7 raw spellings -> 3 types",
+   "rows": 4
+  },
+  {
+   "step": "Fix impossible model_year",
+   "rule": "2105 -> 2015 (transposed digits); range check 2010-2030",
+   "rows": 4
+  },
+  {
+   "step": "Convert weight entered in pounds",
+   "rule": "weight_kg > 3300  ->  value / 2.2046",
+   "rows": 24
+  },
+  {
+   "step": "Invalid engine_size_l set to missing",
+   "rule": "outside [0.6, 8.5]",
+   "rows": 10
+  },
+  {
+   "step": "Invalid horsepower set to missing",
+   "rule": "outside [30, 1500]",
+   "rows": 9
+  },
+  {
+   "step": "Invalid weight_kg set to missing",
+   "rule": "outside [600, 3500]",
+   "rows": 0
+  },
+  {
+   "step": "Invalid cylinders set to missing",
+   "rule": "not in {3,4,5,6,8,10,12}",
+   "rows": 8
+  },
+  {
+   "step": "Drop rows with invalid target co2_gkm",
+   "rule": "<= 0 or sentinel 999",
+   "rows": 9
+  },
+  {
+   "step": "Rebuild missing comb_l100km",
+   "rule": "co2_gkm / emission factor (23.2 gasoline, 26.5 diesel)",
+   "rows": 81
+  },
+  {
+   "step": "Impute numeric gaps (engine, hp, weight)",
+   "rule": "IterativeImputer (BayesianRidge) on numeric + class dummies",
+   "rows": 474
+  },
+  {
+   "step": "Impute categorical gaps",
+   "rule": "mode within vehicle_class",
+   "rows": 328
+  },
+  {
+   "step": "Fill cylinders for invalid / missing engine",
+   "rule": "mode of cylinders within engine-size band",
+   "rows": 8
+  }
+ ],
+ "describe": {
+  "model_year": {
+   "count": 5823.0,
+   "mean": 2019.5,
+   "std": 2.58,
+   "min": 2015.0,
+   "25%": 2017.0,
+   "50%": 2020.0,
+   "75%": 2022.0,
+   "max": 2024.0
+  },
+  "engine_size_l": {
+   "count": 5823.0,
+   "mean": 2.57,
+   "std": 1.15,
+   "min": 0.8,
+   "25%": 1.7,
+   "50%": 2.3,
+   "75%": 3.2,
+   "max": 6.7
+  },
+  "cylinders": {
+   "count": 5823.0,
+   "mean": 4.77,
+   "std": 1.47,
+   "min": 3.0,
+   "25%": 4.0,
+   "50%": 4.0,
+   "75%": 6.0,
+   "max": 12.0
+  },
+  "horsepower": {
+   "count": 5823.0,
+   "mean": 172.55,
+   "std": 67.88,
+   "min": 60.0,
+   "25%": 125.0,
+   "50%": 157.0,
+   "75%": 202.0,
+   "max": 546.0
+  },
+  "weight_kg": {
+   "count": 5823.0,
+   "mean": 1640.72,
+   "std": 325.01,
+   "min": 997.0,
+   "25%": 1394.0,
+   "50%": 1577.0,
+   "75%": 1896.5,
+   "max": 2586.0
+  },
+  "comb_l100km": {
+   "count": 5823.0,
+   "mean": 7.96,
+   "std": 2.13,
+   "min": 3.2,
+   "25%": 6.4,
+   "50%": 7.5,
+   "75%": 9.4,
+   "max": 16.9
+  },
+  "co2_gkm": {
+   "count": 5823.0,
+   "mean": 185.37,
+   "std": 49.77,
+   "min": 73.0,
+   "25%": 148.0,
+   "50%": 176.0,
+   "75%": 220.0,
+   "max": 392.0
+  },
+  "power_to_weight": {
+   "count": 5823.0,
+   "mean": 104.3,
+   "std": 32.21,
+   "min": 38.6,
+   "25%": 85.25,
+   "50%": 98.8,
+   "75%": 115.05,
+   "max": 304.7
+  }
+ },
+ "class_counts": {
+  "Compact": 1101,
+  "Mid-size": 1092,
+  "SUV - Small": 998,
+  "SUV - Standard": 782,
+  "Sub-compact": 536,
+  "Full-size": 452,
+  "Pickup Truck": 344,
+  "Minivan": 266,
+  "Sports/Performance": 252
+ },
+ "high_emitter_share": 0.34552636098231154,
+ "skew_kurt": {
+  "co2_gkm": [
+   0.5953779220968168,
+   -0.15533276918733874
+  ],
+  "horsepower": [
+   1.590076558469185,
+   3.5380590444207582
+  ],
+  "engine_size_l": [
+   1.0047610922134693,
+   0.6590251616274068
+  ],
+  "weight_kg": [
+   0.5128819808207481,
+   -0.598572071174404
+  ]
+ },
+ "n_families": 720,
+ "iqr_outliers": {
+  "engine_size_l": {
+   "n_flagged": 172,
+   "pct": 2.9538038811609137,
+   "upper_fence": 5.450000000000001,
+   "top_class": "Pickup Truck",
+   "top_class_share": 0.6337209302325582
+  },
+  "horsepower": {
+   "n_flagged": 242,
+   "pct": 4.15593336767989,
+   "upper_fence": 317.5,
+   "top_class": "Sports/Performance",
+   "top_class_share": 0.7066115702479339
+  },
+  "weight_kg": {
+   "n_flagged": 0,
+   "pct": 0.0,
+   "upper_fence": 2650.25,
+   "top_class": "-",
+   "top_class_share": 0
+  },
+  "co2_gkm": {
+   "n_flagged": 22,
+   "pct": 0.3778121243345354,
+   "upper_fence": 328.0,
+   "top_class": "Pickup Truck",
+   "top_class_share": 1.0
+  },
+  "power_to_weight": {
+   "n_flagged": 269,
+   "pct": 4.619611883908639,
+   "upper_fence": 159.75,
+   "top_class": "Sports/Performance",
+   "top_class_share": 0.7881040892193308
+  }
+ },
+ "isoforest": {
+  "n_flagged": 59,
+  "by_class": {
+   "Pickup Truck": 37,
+   "Sports/Performance": 22
+  }
+ },
+ "within_class_co2_outliers": 153,
+ "co2_by_class": {
+  "Sub-compact": {
+   "count": 536,
+   "mean": 127.7,
+   "median": 128.5,
+   "std": 16.7
+  },
+  "Compact": {
+   "count": 1101,
+   "mean": 143.3,
+   "median": 144.0,
+   "std": 18.7
+  },
+  "Mid-size": {
+   "count": 1092,
+   "mean": 168.5,
+   "median": 170.0,
+   "std": 23.8
+  },
+  "SUV - Small": {
+   "count": 998,
+   "mean": 173.7,
+   "median": 175.0,
+   "std": 23.4
+  },
+  "Full-size": {
+   "count": 452,
+   "mean": 211.5,
+   "median": 211.0,
+   "std": 31.6
+  },
+  "Sports/Performance": {
+   "count": 252,
+   "mean": 230.0,
+   "median": 230.0,
+   "std": 30.1
+  },
+  "Minivan": {
+   "count": 266,
+   "mean": 231.6,
+   "median": 231.0,
+   "std": 25.3
+  },
+  "SUV - Standard": {
+   "count": 782,
+   "mean": 236.6,
+   "median": 239.0,
+   "std": 33.9
+  },
+  "Pickup Truck": {
+   "count": 344,
+   "mean": 278.1,
+   "median": 276.0,
+   "std": 34.6
+  }
+ },
+ "co2_by_powertrain": {
+  "Full hybrid": {
+   "count": 369,
+   "mean": 125.7,
+   "median": 118.0
+  },
+  "ICE": {
+   "count": 4957,
+   "mean": 191.2,
+   "median": 180.0
+  },
+  "Mild hybrid": {
+   "count": 497,
+   "mean": 171.3,
+   "median": 163.0
+  }
+ },
+ "co2_by_fuel": {
+  "Diesel": {
+   "count": 140,
+   "mean": 204.8,
+   "median": 207.5
+  },
+  "Premium": {
+   "count": 1231,
+   "mean": 208.2,
+   "median": 208.0
+  },
+  "Regular": {
+   "count": 4452,
+   "mean": 178.4,
+   "median": 170.0
+  }
+ },
+ "co2_by_drivetrain": {
+  "AWD": {
+   "count": 1688,
+   "mean": 207.2,
+   "median": 199.0
+  },
+  "FWD": {
+   "count": 3448,
+   "mean": 168.0,
+   "median": 161.0
+  },
+  "RWD": {
+   "count": 687,
+   "mean": 218.9,
+   "median": 221.0
+  }
+ },
+ "co2_by_transmission": {
+  "Automatic": {
+   "count": 3974,
+   "mean": 191.5,
+   "median": 182.0
+  },
+  "CVT": {
+   "count": 742,
+   "mean": 156.8,
+   "median": 154.0
+  },
+  "DCT": {
+   "count": 365,
+   "mean": 182.6,
+   "median": 173.0
+  },
+  "Manual": {
+   "count": 742,
+   "mean": 182.7,
+   "median": 174.0
+  }
+ },
+ "hybrid_vs_ice_pct_by_class": {
+  "Compact": -30.7,
+  "Full-size": -30.6,
+  "Mid-size": -30.8,
+  "Minivan": -33.6,
+  "Pickup Truck": -28.9,
+  "SUV - Small": -30.8,
+  "SUV - Standard": -31.6,
+  "Sports/Performance": -22.7,
+  "Sub-compact": -30.7
+ },
+ "hybrid_vs_ice_pct_avg": -30.048700817727177,
+ "awd_vs_fwd_pct_by_class": {
+  "Compact": 7.8,
+  "Full-size": 9.6,
+  "Mid-size": 10.3,
+  "Minivan": 9.4,
+  "Pickup Truck": 19.1,
+  "SUV - Small": 6.0,
+  "SUV - Standard": 5.7,
+  "Sports/Performance": 13.6,
+  "Sub-compact": 11.5
+ },
+ "awd_vs_fwd_pct_avg": 10.332940162543197,
+ "kruskal_class": {
+  "H": 4238.698890643373,
+  "p": 0.0,
+  "eta2": 0.7276743877955577
+ },
+ "kruskal_powertrain": {
+  "H": 674.7188520837293,
+  "p": 3.066640394256949e-147
+ },
+ "pearson_with_co2": {
+  "weight_kg": {
+   "pearson": 0.8706508355879248,
+   "spearman": 0.8695980762752424
+  },
+  "engine_size_l": {
+   "pearson": 0.8339331823382621,
+   "spearman": 0.8266577942931111
+  },
+  "horsepower": {
+   "pearson": 0.7461388817848439,
+   "spearman": 0.7892719708148246
+  },
+  "power_to_weight": {
+   "pearson": 0.38740255492006864,
+   "spearman": 0.380795105755699
+  }
+ },
+ "trend": {
+  "co2_2015": 192.38810198300283,
+  "co2_2024": 174.51404494382024,
+  "pct_change": -9.290624968461792,
+  "hybrid_share_2015": 3.9660056657223777,
+  "hybrid_share_2024": 25.561797752808985,
+  "weight_2015": 1626.8470254957508,
+  "weight_2024": 1636.0505617977528,
+  "hp_2015": 164.1529745042493,
+  "hp_2024": 173.86797752808988,
+  "turbo_2015": 5.099150141643059,
+  "turbo_2024": 49.71910112359551,
+  "manual_2015": 18.980169971671387,
+  "manual_2024": 6.741573033707865,
+  "slope_g_per_year": -1.9736998650259054,
+  "slope_p": 6.724288781612896e-07
+ },
+ "corr_pairs": {
+  "engine-cylinders": 0.9346855672113298,
+  "engine-horsepower": 0.9096666148166489,
+  "engine-weight": 0.7341378354746594,
+  "horsepower-weight": 0.6021737473729094,
+  "cylinders-horsepower": 0.8508101931701416,
+  "comb_l100km-co2": 0.996556899580229,
+  "city-co2": 0.9797017022979337,
+  "hwy-co2": 0.9776918238081976,
+  "comb_mpg-co2": -0.9446674416073366
+ },
+ "vif_all_with_leakage": {
+  "model_year": 1.1672492515669002,
+  "engine_size_l": 21.65380430952155,
+  "cylinders": 8.088168432315454,
+  "horsepower": 12.572448113324205,
+  "weight_kg": 5.878355920770252,
+  "turbo": 2.034509324422465,
+  "city_l100km": 46.43614611656134,
+  "hwy_l100km": 46.75590123723914,
+  "comb_l100km": 143.24438676050536,
+  "comb_mpg": 10.860981088614164
+ },
+ "vif_design": {
+  "model_year": 1.0776421725658902,
+  "engine_size_l": 21.3436542819625,
+  "cylinders": 7.917802452126242,
+  "horsepower": 12.026902734323302,
+  "weight_kg": 2.3933429340454193,
+  "turbo": 2.030095055576025
+ },
+ "vif_reduced_no_cylinders": {
+  "model_year": 1.0772125239005266,
+  "engine_size_l": 14.641697259458978,
+  "horsepower": 12.025832242157637,
+  "weight_kg": 2.3931354244409655,
+  "turbo": 2.030061492836413
+ },
+ "condition_number": {
+  "with_leakage": 37.11089903417003,
+  "design": 10.451209938264597,
+  "reduced": 8.248232361301241
+ },
+ "pca_explained_ratio_design": [
+  0.563,
+  0.217,
+  0.13,
+  0.068,
+  0.017,
+  0.005
+ ],
+ "bootstrap_coef": {
+  "engine_size_l": {
+   "with_cyl_mean": 0.16104572163670666,
+   "with_cyl_sd": 0.023111696361353146,
+   "no_cyl_mean": 0.17625409893641325,
+   "no_cyl_sd": 0.01906227219336251
+  },
+  "horsepower": {
+   "with_cyl_mean": 0.23197494073464575,
+   "with_cyl_sd": 0.01702537441765159,
+   "no_cyl_mean": 0.23215137927163781,
+   "no_cyl_sd": 0.017032207250558134
+  },
+  "weight_kg": {
+   "with_cyl_mean": 0.6026644890356617,
+   "with_cyl_sd": 0.007665815913767391,
+   "no_cyl_mean": 0.6027460389902065,
+   "no_cyl_sd": 0.007680221008538151
+  },
+  "model_year": {
+   "with_cyl_mean": -0.1104123587397735,
+   "with_cyl_sd": 0.005129465755621447,
+   "no_cyl_mean": -0.11052604483263571,
+   "no_cyl_sd": 0.005122364649683302
+  },
+  "turbo": {
+   "with_cyl_mean": -0.017714147221798406,
+   "with_cyl_sd": 0.006870862959470848,
+   "no_cyl_mean": -0.017739783147317403,
+   "no_cyl_sd": 0.006873387417974241
+  }
+ }
+}

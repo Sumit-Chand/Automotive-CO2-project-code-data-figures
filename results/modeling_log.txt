@@ -1,0 +1,36 @@
+split {'n_total': 5823, 'n_train': 4664, 'n_test': 1159, 'families_train': 576, 'families_test': 144, 'train_mean': 185.51007718696397, 'test_mean': 184.80586712683348, 'train_std': 50.162078131096614, 'test_std': 48.175281933594256}
+Mean baseline                    CV RMSE   50.22 +/-  2.87   R2 -0.019
+Linear regression (OLS)          CV RMSE   10.15 +/-  0.51   R2 0.958
+Ridge (CV alpha)                 CV RMSE   10.14 +/-  0.51   R2 0.958
+Ridge on log(CO2)                CV RMSE    9.95 +/-  0.66   R2 0.960
+Random forest (default)          CV RMSE   12.27 +/-  0.66   R2 0.939
+Gradient boosting (default)      CV RMSE   10.83 +/-  0.79   R2 0.953
+Random forest (tuned): best CV RMSE 11.76  params {'model__n_estimators': 150, 'model__min_samples_leaf': 1, 'model__max_features': 0.4, 'model__max_depth': None}  (72s)
+Gradient boosting (tuned): best CV RMSE 10.43  params {'model__min_samples_leaf': 40, 'model__max_leaf_nodes': 15, 'model__max_iter': 200, 'model__learning_rate': 0.12, 'model__l2_regularization': 1.0}  (91s)
+Blend (Ridge-log + tuned GB): CV RMSE 9.68
+                          model     MAE    RMSE     R2    MAPE  train_RMSE  train_R2  cv_rmse  cv_rmse_sd  cv_r2
+0                 Mean baseline  39.179  48.160 -0.000  22.763      50.157     0.000   50.223       2.870 -0.019
+1       Linear regression (OLS)   7.489   9.703  0.959   4.247       9.845     0.961   10.145       0.506  0.958
+2              Ridge (CV alpha)   7.490   9.706  0.959   4.247       9.845     0.961   10.145       0.506  0.958
+3             Ridge on log(CO2)   7.043   9.075  0.964   3.893       9.598     0.963    9.952       0.655  0.960
+4       Random forest (default)   9.400  12.192  0.936   5.159       4.913     0.990   12.270       0.657  0.939
+5   Gradient boosting (default)   8.055  10.494  0.953   4.445       6.989     0.981   10.829       0.793  0.953
+6         Random forest (tuned)   8.994  11.583  0.942   4.955       3.600     0.995   11.761       0.774    NaN
+7     Gradient boosting (tuned)   8.045  10.290  0.954   4.464       7.292     0.979   10.435       0.634    NaN
+8  Blend (Ridge-log + tuned GB)   7.096   9.116  0.964   3.938       8.072     0.974    9.680       0.635  0.962
+                                 model  cv_f1  accuracy  precision  recall     f1  roc_auc
+0                    Majority baseline  0.000     0.647      0.000   0.000  0.000    0.500
+1                  Logistic regression  0.938     0.959      0.943   0.939  0.941    0.994
+2         Gradient boosting classifier  0.937     0.946      0.916   0.932  0.924    0.990
+3  Regression model + 200 g/km cut-off    NaN     0.957      0.954   0.922  0.938    0.995
+BEST: Blend (Ridge-log + tuned GB) {'MAE': 7.095993305332802, 'RMSE': 9.1162428384783, 'R2': 0.964160815621949, 'MAPE': 3.9376483304873915} {'rmse': [8.715914078018418, 9.502052528204366], 'r2': [0.9597909558058731, 0.9680980973723049], 'mae': [6.783346604006763, 7.40555361628991]}
+paired {'Gradient boosting (tuned) vs Ridge on log(CO2)': 1.6550627554132137e-10, 'Gradient boosting (tuned) vs Random forest (tuned)': 6.49913574713745e-11, 'Ridge on log(CO2) vs Ridge (CV alpha)': 0.031631327963658834, 'Blend vs Ridge on log(CO2)': 0.3159390506958504}
+resid {'mean': -0.7318934023084555, 'sd': 9.086815478360077, 'skew': 0.04186113042857103, 'kurtosis': 0.44555131601269515, 'within_5': 43.917169974115616, 'within_10': 75.49611734253668, 'max_abs': 32.10920457608859, 'abs_res_vs_pred_spearman': 0.20115863098729558}
+ols vs ridge {'model_year': {'OLS': -3.027, 'Ridge': -3.022}, 'engine_size_l': {'OLS': 15.899, 'Ridge': 15.775}, 'cylinders': {'OLS': 0.777, 'Ridge': 0.819}, 'horsepower': {'OLS': 5.467, 'Ridge': 5.575}, 'weight_kg': {'OLS': 23.591, 'Ridge': 23.458}, 'turbo': {'OLS': 1.156, 'Ridge': 1.127}}
+perm           feature  rmse_increase    sd
+4       weight_kg          26.01  0.66
+11     powertrain          13.84  0.28
+1   engine_size_l          13.41  0.45
+6            make           3.59  0.20
+9      drivetrain           2.97  0.19
+7   vehicle_class           2.90  0.50

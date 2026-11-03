@@ -1,0 +1,146 @@
+{
+ "pilot": {
+  "n": 5823,
+  "baseline_rmse": 49.765400530175455,
+  "r_weight": 0.8706508355879243,
+  "slope_g_per_100kg": 13.332353221102707,
+  "intercept": -33.37622550681883,
+  "r2": 0.7580328775099507,
+  "rmse": 24.479677029794605
+ },
+ "pilot3": {
+  "r2": 0.843931954592029,
+  "rmse": 19.660044632506917
+ },
+ "split_demo": {
+  "Random forest (min_samples_leaf=1)": {
+   "random_kfold_rmse": 10.642581787488828,
+   "group_kfold_rmse": 12.45553072266532
+  },
+  "Gradient boosting (default)": {
+   "random_kfold_rmse": 9.914124022596564,
+   "group_kfold_rmse": 11.323659217408059
+  }
+ },
+ "weight_missing_by_band_pct": {
+  "2015-17": 8.1,
+  "2018-20": 2.7,
+  "2021-24": 2.3
+ },
+ "hp_missing_by_band_pct": {
+  "2015-17": 3.0,
+  "2018-20": 2.7,
+  "2021-24": 3.4
+ },
+ "raw_head": [
+  {
+   "vehicle_id": "V04494",
+   "model_family": "F0119",
+   "make": "Make_E",
+   "model_year": 2020,
+   "vehicle_class": "Full-size",
+   "engine_size_l": 4.4,
+   "cylinders": 8,
+   "horsepower": 228.0,
+   "weight_kg": 1848.0,
+   "turbo": 0,
+   "transmission": "DCT",
+   "drivetrain": "FWD",
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "city_l100km": 11.4,
+   "hwy_l100km": 8.2,
+   "comb_l100km": 9.6,
+   "comb_mpg": 24.4,
+   "co2_gkm": 223
+  },
+  {
+   "vehicle_id": "V05656",
+   "model_family": "F0668",
+   "make": "Make_K",
+   "model_year": 2023,
+   "vehicle_class": "Mid-size",
+   "engine_size_l": 2.3,
+   "cylinders": 4,
+   "horsepower": 202.0,
+   "weight_kg": 1531.0,
+   "turbo": 1,
+   "transmission": "Automatic ",
+   "drivetrain": "FWD",
+   "powertrain": "Mild hybrid",
+   "fuel_type": "Premium",
+   "city_l100km": 8.1,
+   "hwy_l100km": 5.6,
+   "comb_l100km": 6.5,
+   "comb_mpg": 35.9,
+   "co2_gkm": 151
+  },
+  {
+   "vehicle_id": "V04732",
+   "model_family": "F0255",
+   "make": "Make_B",
+   "model_year": 2020,
+   "vehicle_class": "Mid-size",
+   "engine_size_l": 2.5,
+   "cylinders": 4,
+   "horsepower": 191.0,
+   "weight_kg": 1471.0,
+   "turbo": 1,
+   "transmission": "Automatic",
+   "drivetrain": "FWD",
+   "powertrain": "Mild hybrid",
+   "fuel_type": "Regular",
+   "city_l100km": 8.0,
+   "hwy_l100km": 5.4,
+   "comb_l100km": 6.6,
+   "comb_mpg": 35.9,
+   "co2_gkm": 152
+  },
+  {
+   "vehicle_id": "V05556",
+   "model_family": "F0017",
+   "make": "Make_L",
+   "model_year": 2023,
+   "vehicle_class": "Compact",
+   "engine_size_l": 1.0,
+   "cylinders": 3,
+   "horsepower": 116.0,
+   "weight_kg": 1390.0,
+   "turbo": 1,
+   "transmission": "CVT",
+   "drivetrain": "FWD",
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "city_l100km": 6.8,
+   "hwy_l100km": 4.9,
+   "comb_l100km": 5.8,
+   "comb_mpg": 40.5,
+   "co2_gkm": 135
+  },
+  {
+   "vehicle_id": "V01564",
+   "model_family": "F0578",
+   "make": "Make_C",
+   "model_year": 2017,
+   "vehicle_class": "SUV - Small",
+   "engine_size_l": 2.5,
+   "cylinders": 4,
+   "horsepower": 191.0,
+   "weight_kg": 1651.0,
+   "turbo": 1,
+   "transmission": "Automatic",
+   "drivetrain": "AWD",
+   "powertrain": "ICE",
+   "fuel_type": "Regular",
+   "city_l100km": 11.1,
+   "hwy_l100km": 7.3,
+   "comb_l100km": 8.9,
+   "comb_mpg": 26.6,
+   "co2_gkm": 205
+  }
+ ],
+ "engine_iqr_example": {
+  "q1": 1.7,
+  "q3": 3.2
+ }
+}
